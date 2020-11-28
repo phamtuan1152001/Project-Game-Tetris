@@ -24,7 +24,6 @@ public class FigureZ extends Figure {
 	}
 	@Override
 	public int get_rotati() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }
