@@ -13,9 +13,7 @@ public class FigureO extends Figure {
 		X = new int []{0,1,0,1};
 		Y= new int []{4,4,5,5};
 	}
-	@Override
 	public int get_rotati() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }
