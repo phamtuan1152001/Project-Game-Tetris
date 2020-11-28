@@ -63,7 +63,7 @@ public class Tetris extends JFrame immplements KeyListener{
 	protected JPanel FP;
 	protected JPanel chuatunghinh;
 	protected Color curClo;
-  Figure Fi;
+        Figure Fi;
 	public int vitri=0;
 	public int k=-1;
 	int []a = new int[4];
