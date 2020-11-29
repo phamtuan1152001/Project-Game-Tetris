@@ -96,5 +96,133 @@ public class Tetris extends JFrame immplements KeyListener{
 	private static JButton jexit = new JButton();
   
   public Tetris(){
-    
+	  super("TETRIS GAME");
+	  LashGame sg = new LashGame();
+	  addKeyListener(this);
+	  setIconImage(LoadImage("mtetris.png"));
+	  
+	  InitMenu();
+	  setJMenubar(menuBar);
+	  
+	  game=Playgame();
+	  all.add(game,BorderLayout.CENTER);
+	  
+	  Left=SetLeftGame();
+	  right=SetRightGame();
+	  all.add(left,BorderLayout.WEST);
+	  all.add(right,BorderLayout.EAST);
+	  add(all);
+	  pack();
+	  
+	  Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+	  setLocation(screen.width/2 - getWidth()/2, screen.height/2 - getHeight()/2);
+	  this.setResizalbe(True);
+	  this.setVisible(True);
+	  this.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
+
+  public void InitMenu(){
+	  MenuHandler Mh = new MenuHandler();
+	  ImageIcon newgame = new ImageIcon("iconimage.png");
+	  ImageIcon restart = new ImageIcon("mrestart.png");
+	  ImageIcon pause = new ImageIcon("mpause.png");
+	  ImageIcon hiscore = new ImageIcon("mhiscore.png");
+	  ImageIcon exit = new ImageIcon("mexit.png");
+	  
+	  menuTetris = new Jmenu("Option");
+	  menuTetris.setMnemonic('J');
+	  
+	  ItemNew = new	JmenuItem("New Game",newgame);
+	  ItemNew.setMnemonic('N');
+	  ItemNew.addActionListener(Mh);
+	  
+	  ItemRestart = new JMenuItem("Restart",restart);
+	  ItemRestart.setMnemonic('R');
+	  ItemRestart.addActionListener(Mh);
+	  
+	  ItemPause = new JMenuItem("Pause",pause);
+	  ItemPause.setMnemonic('P');
+	  ItemPause.addActionListener(Mh);
+	  
+	  ItemHiscore = new JMenuItem("Hiscore",hiscore);
+	  ItemHiscore.setMnemonic('C');
+	  ItemHiscore.addActionListener(Mh);
+	  
+	  ItemExit = new JMenuItem("Exit",exit);
+	  ItemExit.setMnemonic('E');
+	  ItemExit.addActionListener(Mh);
+	  
+	  menuTetris.add(ItemNew);
+	  menuTetris.add(ItemRestart);
+	  menuTetris.add(ItemPause);
+	  menuTetris.add(ItemHiscore);
+	  menuTetris.add(ItemExit);
+	  
+	  menuBar.add(menuTetris);
+	  
+  }
+      public Jpanel Playgaame(){
+          JPanel center = new JPanel(new GridLayout(20,10));
+	  center.setPreferredSize(new Dimension(10*24,20*24));
+	  cells = new JPanel[20][10];
+	  for(int i = 0; i < 20; i++){
+		  for(int j = 0; j < 10; j++){
+			  cell[i][j]= new JPanel();
+			  if((i%2==0 && j%2==0)||(i%2!=0 && j%2!=0))
+				  cell[i][j].setBackgroud(A);
+			  else
+				  cell[i][j].setBackground(B);
+			  cell[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			  center.add(cells[i][j]);
+		  }
+	  }
+      return center;
+      }
+	public JPanel SetLeftgame(){
+		JPanel l = new JPanel();
+		BoxLayout rl = new BoxLayout(l,BoxLayout.Y_AXIS);
+		l.setLayout(rl);
+		l.setBorder(new EtchedBorder());
+		JPanel JP = new JPanel();
+		JP.setLayout(new BoxLayout(JP, BoxLayout(JP,BoxLayout.LINE_AXIS);
+		JP.add(new JLabel("Static"));
+		l.add(Box.createRigidArea(new Dimension(0,10));
+		l.add(JP);
+		l.add(Box.createRigidArea(new Dimension(0,10));
+		Dimension d = new Dimension(4*12,4*12);
+		picture = new JLabel[7];
+		for(int k=0; k<7; k++){
+			cell= new JPanel[4][4];
+			chuatunghinh = new JPanel();
+			FP = new JPanel();
+			FP.setLayout(new BoxLayout(FP, BoxLayout.LINE_AXIS));
+			chuatunghinh.setLayout(new GridLayout(4,4));
+			chuatunghinh.setMinimumsize(d);
+			chuatunghinh.setPreferredSize(d);
+			chuatunghinh.setMaximumSize(d);
+			for(int i=0; i<4; i++){
+				for(int j=0; j<4; J++){
+					cell[i][j] = new JPanel();
+					cell[i][j].setBackground(null);
+					chuatunghinh.add(cell[i][j]);
+				}
+			}
+			int h=k+1;
+			switch(h){
+				case 1:{
+					FigureI fi = new FigureI();
+					for(int i=0; i<4; i++){
+						cell[ft.arrX[i]][ft.arrY[i]].setBackground(ft.COL_I);
+						cell[ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+					}
+				}break;
+				case 2: FigureT ft = new FigureT();{
+					for(int i = 0; i<4; i++){
+						cell[ft.arrX[i]][ft.arrY[i]].setBackground(ft.COL_T);
+						cell(ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				        }
+	                        }break;
+					
+			
+					       
+				     
