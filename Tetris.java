@@ -469,4 +469,4 @@ public class Tetris extends JFrame immplements KeyListener{
 					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				}
 			}
-		
+		}
