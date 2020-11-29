@@ -222,7 +222,251 @@ public class Tetris extends JFrame immplements KeyListener{
 						cell(ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 				        }
 	                        }break;
-					
+				case 3:	FigureO fo = new Figureo();{
+					for(int i = 0; i < 4; i++){
+						cell[fo.arrX[i]][fo.arrY[i]].setbackground(fo.COL_L);
+						cell[fo.arrX[i]][fo.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						}
+					}break;
+				case 4: FigureL fl = new FigureL();{
+					for( int i = 0; i < 4; i++){
+						cell[fl.arrX[i]][fl.arrY[i]].setbackground(fl.COL_L);
+						cell[fl.arrX[i]][fl.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+					}
+				}break;
+				case 5: FigureJ fj = new FigureJ();{
+					for(int i=0;i<4;i++){
+						cell[fj.arrX[i]][fj.arrY[i]].setBackground(fj.COL_J);
+						cell[fj.arrX[i]][fj.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						}
+				}break;
+				case 6: FigureS fs = new FigureS();{
+					for(int i=0;i<4;i++){
+						cell[fs.arrX[i]][fs.arrY[i]].setBackground(fs.COL_S);
+						cell[fs.arrX[i]][fs.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						}
+				}break;
+				case 7: FigureZ fz = new FigureZ();{
+					for(int i=0;i<4;i++){
+						cell[fz.arrX[i]][fz.arrY[i]].setBackground(fz.COL_Z);
+						cell[fz.arrX[i]][fz.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						}
+				}break;
+			}
+			FP.add(chuatunghinh);
+			JLabel text = new JLabel(" X ");
+			FP.add(text);
 			
-					       
-				     
+			picture[k] = new JLabel(" 0 ");
+			picture[k].setForeground(color.BLUE);
+			FP.add(picture[k]);
+			l.add(FP);
+			l.add(Box.createRigidArea(new Dimension(100, 15)));
+		}			       
+		l.setMinimumSize(new Dimension(150,0));
+		l.setPreferredSize(new Dimension(150,0));
+		l.setMaximumSize(new Dimension(150,0));
+		return l;
+	}
+	public JPanel SetRightGame(){
+		JPanel r new JPanel();
+		r.setBorder(new EtchedBorder());
+		BoxLayout lr = new BoxLayout(r, BoxLayout.Y_AXIS);
+		r.setLayout(lr);
+		
+		JPanel sharp = new JPanel();
+		
+		Dimension d = new Diemension(100, 100);
+		sharp.setLayout(new GridLayout(4, 4));
+		sharp.setMaximumSize(d);
+		sharp.setMinimumSize(d);
+		sharp.setPreferredSize(d);
+		cellr = new JPanel[4][4];
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 4; j++){
+				cellr[i][j] = new JPanel();
+				sharp.add(cellr[i][j]);
+			}
+		}
+		
+		JLabel nextSharp = new JLabel("Next Shape            ");
+		nextSharp.setForeground(Color.BLACK);
+		r.add(nextSharp);
+		r.add(sharp);
+		r,add(Box.createRigidAre(new Dimension(0, 50)));
+		JPanel score = new JPanel(new FlowLayout());
+		JLabel textscore = new JLabel("Score : ");
+		textscore.setForeground(Color.BLACK);
+		score = new JLabel (" 0 ");
+		score.setForeground(Color.RED);
+		
+		JPanel LV = new JPanel(new FlowLayout());
+		JLabel textlevel = new JLabel("Level : ");
+		textlevel.setForeground(Color.BLACK);
+		level = new JLabel(" 0 ");
+		level.setForeground(Color.RED);
+		score.add(textscore);
+		score.add(score);
+		LV.add(textlevel);
+		LV.add(level);
+		score.setMaximumSize(new Dimension(200, 30));
+		LV.setMaximumSize(new Dimension(200, 30));
+		score.setBorder(new EtchedBorder());
+		LV.setBorder(new EtchBorder());
+		r.add(score);
+		r.add(LV);
+		r.add(Box.createRigidArea(new Dimension(0, 1)));
+		JPanel tutoral = new JPanel();
+		tutorial.setLayout(new BoxLayout(tutorial, BoxLayout.Y_AXIS));
+		JLabel sTut = new JLabel("Tutorial         ");
+		sTut.setForeground(Color.RED);
+		JLabel sN = new JLabel("N:");
+			sN.setForeground(new Color(142,7,158));
+		JLabel sP= new JLabel("P:");
+			sP.setForeground(Color.BLUE);
+		JLabel sR = new JLabel("R:");
+			sR.setForeground(Color.RED);
+		JLabel sH = new JLabel("H:");
+			sH.setForeground(Color.GREEN);
+		JLabel sT = new JLabel("T:");
+			sT.setForeground(Color.CYAN);
+		JLabel sE = new JLabel("E:");
+			sE.setForeground(Color.ORANGE);
+		JLabel sNewgame = new JLabel(" New game");
+		JLabel sPause= new JLabel(" Pause        ");
+		JLabel sRestart = new JLabel(" Restart      ");
+		JLabel sHiscore = new JLabel(" High score");
+		JLabel sPerfect = new JLabel(" Perfect       ");
+		JLabel sExit = new JLabel(" Exit              ");
+		JPanel pN = new JPanel();
+		JPanel pP = new JPanel();
+		JPanel pR = new JPanel();
+		JPanel pH = new JPanel();
+		JPanel pT = new JPanel();
+		JPanel pE = new JPanel();
+		pN.add(sN);
+		pN.add(sNewgame);
+		pP.add(sP);
+		pP.add(sPause);
+		pR.add(sR);
+		pR.add(sRestart);
+		pH.add(sH);
+		pH.add(sHiscore);
+		pT.add(sT);
+		pT.add(sPerfect);
+		pE.add(sE);
+		pE.add(sExit);
+		pN.setMaximumSize(new Dimension(150,30));
+		pP.setMaximumSize(new Dimension(150,30));
+		pR.setMaximumSize(new Dimension(150,30));
+		pH.setMaximumSize(new Dimension(150,30));
+		pT.setMaximumSize(new Dimension(150,30));
+		pE.setMaximumSize(new Dimension(150,30));
+		tutorial.add(sTut);
+		tutorial.add(Box.createRigidArea(new Dimension(0,20)));
+		tutorial.add(pN);
+		tutorial.add(pP);
+		tutorial.add(pR);
+		tutorial.add(pH);
+		tutorial.add(pT);
+		tutorial.add(pE);
+		tutorial.setBorder(new EtchedBorder());
+		r.add(tutorial);
+		r.setMinimumSize(new Dimension(150,0));
+		r.setPreferredSize(new Dimension(150,0));
+		r.setMaximumSize(new Dimension(150,0));
+		return r;
+	}
+	public void MoveLeft(){
+		boolean stop = true;
+		for(int i=0;i<4;i++){
+			boolean kt= true;
+			for(int j=0;j<4;j++){
+				if(a[i] == a[j] && b[i]-1==b[j])
+					kt=false;
+			}
+			if(kt==true){
+				if(b[i]-1<0)
+					stop=false;
+				else if((cells[a[i]][b[i]-1].getBackground()!=A)&&(cells[a[i]][b[i]-1].getBackground()!=B)){
+					stop=false;
+				}
+			}
+		}
+		if(stop==true){
+			curClo = cells[a[0]][b[0]].getBackground();
+			for(int i=0;i<4;i++){
+				if((a[i]%2==0 && b[i]%2==0)|| (a[i]%2!=0 && b[i]%2!=0))
+					cells[a[i]][b[i]].setBackground(A);
+				else
+					cells[a[i]][b[i]].setBackground(B);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			}
+			for(int i=0;i<4;i++){
+				b[i]=b[i]-1;
+				cells[a[i]][b[i]].setBackground(curClo);
+				cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+			}
+			vitri--;
+		}
+		public void MoveRight(){
+		boolean stop = true;
+		for(int i=0;i<4;i++){
+			boolean kt= true;
+			for(int j=0;j<4;j++){
+				if(a[i] == a[j] && b[i]+1==b[j])
+					kt=false;
+			}
+			if(kt==true){
+				if(b[i]+1>=10)
+					stop=false;
+				else if((cells[a[i]][b[i]+1].getBackground()!=A)&&(cells[a[i]][b[i]+1].getBackground()!=B)){
+					stop=false;
+				}
+			}
+		}
+		if(stop==true){
+			curClo = cells[a[0]][b[0]].getBackground();
+			for(int i=0;i<4;i++){
+				if((a[i]%2==0 && b[i]%2==0)|| (a[i]%2!=0 && b[i]%2!=0))
+					cells[a[i]][b[i]].setBackground(A);
+				else
+					cells[a[i]][b[i]].setBackground(B);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				
+			}
+			for(int i=0;i<4;i++){
+				b[i]=b[i]+1;
+				cells[a[i]][b[i]].setBackground(curClo);
+				cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+			}
+			vitri++;
+		}
+		public void MoveNext(){
+		boolean stop = true;
+		for(int i=0;i<4;i++){
+			boolean kt= true;
+			for(int j=0;j<4;j++){
+				if(a[i]+1 == a[j] && b[i]==b[j])
+					kt=false;
+			}
+			if(kt==true){
+				if(a[i]+1>=20)
+					stop=false;
+				else if((cells[a[i]+1][b[i]].getBackground()!=A)&&(cells[a[i]+1][b[i]].getBackground()!=B)){
+					stop=false;
+				}
+			}
+		}
+		if(stop==true){
+			curClo = cells[a[0]][b[0]].getBackground();
+			for(int i=0;i<4;i++){
+				if(a[i]>=0){
+					if((a[i]%2==0 && b[i]%2==0)|| (a[i]%2!=0 && b[i]%2!=0))
+						cells[a[i]][b[i]].setBackground(A);
+					else
+						cells[a[i]][b[i]].setBackground(B);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				}
+			}
+		
