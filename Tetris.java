@@ -469,4 +469,294 @@ public class Tetris extends JFrame immplements KeyListener{
 					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				}
 			}
+			for(int i = 0; i < 4; i++)
+			{
+				a[i] = a[i] + 1;
+				cells[a[i]][b[i]].setBackground(curClo);
+				cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBoder.RAISED));
+			}
+			k++;
 		}
+	}
+	public int kt(int tempa[], int tempb[], int ArC[], int BrC[])
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (tempb[i] + vitri < 0 || tempb[i] + vitri > 9 || tempa + k > 19)
+			{
+				return 0;
+			}
+			boolean ktq = true;
+			for (int j = 0; j < 4; j++)
+			{
+				if ((tempa[i] == ArC[j]) && (tempb[i] == BrC[j]))
+				{
+					ktq = false;
+				}
+			}
+			if (ktq == true)
+			{
+				if (cells[tempa[i] + k][tempb[i] + vitri].getBackground() != A) && (cells[tempa[i] + k][tempb[i] + vitri].getBackground() != B))	
+				{
+					return 0;
+				}
+			}
+		}
+		return 1;
+	}
+	public int KiemTra()
+	{
+		int tt = 0;
+		int []ArC = new int[4];
+		int []BrC = new int [4];
+		int []tempa = new int[4];
+		int []tempb = new int[4];
+		Color curC = cells[a[0]] [b[0]].getBackground();
+		if (curC == FigureI.COL_I)
+		{
+			tt = I.rotati;
+			ArC = I.X;
+			BrC = I.Y;
+			I.rotation();
+			tempa = I.X;
+			tempb = I.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				I.rotati = tt;
+				I.X = ArC;
+				I.Y = BrC;
+				return 0;
+			}
+			I.rotati = tt;
+			I.X = ArC;
+			I.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureT.CO;_T)
+		{
+			tt = T.rotati;
+			ArC = T.X;
+			BrC = T.Y;
+			T.rotation();
+			tempa = T.X;
+			tempb = T.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				T.rotati == TT;
+				T.X = ArC;
+				T.Y = BrC;
+				return 0;
+			}
+			T.rotati = tt;
+			T.X = ArC;
+			T.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureO.COL_O)
+		{
+			tt = O.rotati;
+			ArC = O.X;
+			BrC = O.Y;
+			O.rotation();
+			tempa = O.X;
+			tempb = O.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				O.rotati = tt;
+				O.X = ArC;
+				O.Y = BrC;
+				return 0;
+			}
+			O.rotati = tt;
+			O.X = ArC;
+			O.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureL.COL_L)
+		{
+			tt = L.rotati;
+			ArC = L.X;
+			BrC = L.Y;
+			L.rotation();
+			tempa = L.X;
+			tempb = L.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				L.rotati = tt;
+				L.X = ArC;
+				L.Y = BrC;
+				return 0;
+			}
+			L.rotati = tt;
+			L.X = ArC;
+			L.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureJ.COL_J)
+		{
+			tt = J.rotati;
+			ArC = J.X;
+			BrC = J.Y;
+			J.rotation();
+			tempa = J.X;
+			tempb = J.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				J.rotati = tt;
+				J.X = ArC;
+				J.Y = BrC;
+				return 0;
+			}
+			J.rotati = tt;
+			J.X = ArC;
+			J.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureS.COL_S)
+		{
+			tt = S.rotati;
+			ArC = S.X;
+			BrC = S.Y;
+			S.rotation();
+			tempa = S.X;
+			tempb = S.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				S.rotati = tt;
+				S.X = ArC;
+				S.Y = BrC;
+				return 0;
+			}
+			S.rotati = tt;
+			S.X = ArC;
+			S.Y = BrC;
+			return 1;
+		}
+		else if (curC == FigureZ.COL_Z)
+		{
+			tt = Z.rotati;
+			ArC = Z.X;
+			BrC = Z.Y;
+			Z.rotation();
+			tempa = Z.X;
+			tempb = Z.Y;
+			if (kt (tempa, tempb, ArC, BrC) == 0)
+			{
+				Z.rotati = tt;
+				Z.X = ArC;
+				Z.Y = BrC;
+				return 0;
+			}
+			Z.rotati = tt;
+			Z.X = ArC;
+			Z.Y = BrC;
+			return 1;
+		}
+		return 0;
+	}
+	public void MoveRotation()
+	{
+		if (KiemTra() == 1)
+		{
+			curClo = cells[a[0]][b[0]].getBackground();
+			for (int i = 0; i < 4; i++)
+			{
+				if (a[i] >= 0)
+				{
+					if (( a[i] %2 == 0 && b[i] %2 == 0)|| (a[i] %2 != 0 && b[i] %2 != 0))
+					{
+						cells[a[i]][b[i]].setBackground(A);
+					}
+					else
+					{
+						cells[a[i]][b[i]].setBackground(B);
+					}
+					cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				}
+			}
+			if (curClo == FigureI.COL_I)
+			{
+				I.rotation();
+				for (int i = 0; i < 4; i++)
+				{
+					
+					a[i] = I.X[i] + k;
+					b[i] = I.Y[i] + vitri;
+					cells[a[i]][b[i]].setBackground(curClo);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+				
+				
+			}
+			else if (curClo == FigureT.COL_T)
+			{
+				T.rotation();
+				for (int i = 0; i < 4; i++)
+				{
+						a[i] = T.X[i] + k;
+						b[i] = T.Y[i] + vitri;
+						cells[a[i]][b[i]].setBackground(curClo);
+						cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+					
+				}
+				
+			}
+			else if (curClo == FigureO.COL_O)
+			{
+				O.rotation();
+				for(int i = 0;i<4;i++)
+				{
+						a[i] = O.X[i]+k;
+						b[i] = O.Y[i]+vitri;
+						cells[a[i]][b[i]].setBackground(curClo);
+						cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				
+					}
+			}
+			else if (curClo == FigureL.COL_L)
+			{
+				L.rotation();
+				for (int i = 0; i < 4; i++)
+				{
+					a[i] = L.X[i] + k;
+					b[i] = L.Y[i] + vitri;
+					cells[a[i]][b[i]].setBackground(curClo);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+			}
+			else if (curClo == FigureJ.COL_J)
+			{
+				J.rotation();
+				for (int i = 0; i < 4; i++)
+				{
+					a[i] = J.X[i] + k;
+					b[i] = J.Y[i] + vitri;
+					cells[a[i]][b[i]].setBackground(curClo);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+			}
+			else if (curClo == FigureS.COL_S)
+			{
+				S.rotation();
+				for (int i = 0; i  <4; i++)
+				{
+					a[i] = S.X[i] + k;
+					b[i] = S.Y[i] + vitri;
+					cells[a[i]][b[i]].setBackground(curClo);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+			}
+			else if(curClo == FigureZ.COL_Z)
+			{
+				Z.rotation();
+				for (int i = 0; i < 4; i++){
+					a[i] = Z.X[i] + k;
+					b[i] = Z.Y[i] + vitri;
+					cells[a[i]][b[i]].setBackground(curClo);
+					cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+			}
+		}
+	}		
+		
+			
