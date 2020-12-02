@@ -758,5 +758,59 @@ public class Tetris extends JFrame immplements KeyListener{
 			}
 		}
 	}		
-		
+public void nextNow(){
+		int t=0;
+		boolean kt = true;
+		int x=0;
+		curClo =cells[a[0]][b[0]].getBackground(); 
+		while(true)
+		{
+			for(int i=0; i<4; i++)
+			{
+				boolean flag=true;
+				for(int j=0; j<4; j++)
+				{
+					if(a[i]+1==a[j] && b[i]==b[j])
+						flag=false;
+				}
+				if(flag==true)
+				{
+					if(a[i]+t<=18)
+					if((cells[a[i]+t+1][b[i]].getBackground()!=A)&&(cells[a[i]+t+1][b[i]].getBackground()!=B))
+					{
+						x=1;
+						kt=false;
+					}
+				}
+				if(a[i]+t>=18)
+					kt=false;
+			}
+			if(kt)
+				t++;
+			else
+				break;
+		}
+		if(x==1)
+			t=t-1;
+		for(int i=0;i<4;i++){
+			if((a[i]%2==0 && b[i]%2==0)|| (a[i]%2!=0 && b[i]%2!=0))
+				cells[a[i]][b[i]].setBackground(A);
+			else
+				cells[a[i]][b[i]].setBackground(B);
+			cells[a[i]][b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		}
+		k=t+1;
+		for(int i=0;i<4;i++){
+			a[i]=a[i]+k;
+			cells[a[i]][b[i]].setBackground(curClo);
+			cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		}
+	}
+public void Thoat()
+	{
+		JOptionPane.showMessageDialog(this,"<html><font color='red' size='50px'>Chúc bạn có 1 ngày làm việc vui vẻ</font></html>","Help", 
+                JOptionPane.PLAIN_MESSAGE, 
+                new ImageIcon(LoadImage("mtetris.png")));
+		System.exit(k);
+	}
 			
