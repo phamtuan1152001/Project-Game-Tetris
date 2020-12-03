@@ -226,3 +226,154 @@ public void Xoa(int a[]){
 		return true;
 		
 	}
+	
+	public Run_Tetris(){
+		int ll = 0;
+		Random rd = new Random();
+		while(true){
+			if(overGame() == false){
+				jt.setOver();
+				Xoa2();
+			}
+			ll = jt.l;
+			
+			if(ll == 0)
+				jt.picture[0].setText(Integer.toString(++jt.demI));
+			else if(ll == 1)
+				jt.picture[1].setText(Integer.toString(++jt.demT));
+			else if(ll==2)
+				jt.picture[2].setText(Integer.toString(++jt.demO));
+			else if(ll==3)
+				jt.picture[3].setText(Integer.toString(++jt.demL));
+			else if(ll==4)
+				jt.picture[4].setText(Integer.toString(++jt.demJ));
+			else if(ll==5)
+				jt.picture[5].setText(Integer.toString(++jt.demS));
+			else if(ll==6)
+				jt.picture[6].setText(Integer.toString(++jt.demZ));
+			jt.l = rd.nextInt(7);
+			jt.vitri = 0;
+			for(jt.k = 0; jt.k < 20; jt.k++){
+				if(!jt.pause)
+					jt.k--;
+				else{
+					nextShape(jt.l);
+					if(!jt.newg){
+						Xoa2();
+						ll = rd.nextInt(7);
+						jt.newg = true;
+					}
+					switch(ll){
+						case 0:{
+							for(int i = 0; i < 4; i++){
+								jt.a[i] = jt.I.X[i] + jt.k;
+								jt.b[i] = jt.I.Y[i] + jt.vitri;
+								
+								if(jt.I.Y[i] + jt.vitri < 10 && jt.I.Y[i] + jt.vitri >= 0){
+									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.I.COL_I);
+									jt.cells[jt.a[i]][jt.b[i]].setBorder(Borderfactory.createbevelBorder(bevelBorder.RAISED));
+							}jt.anhao();
+						}
+					}break;
+					case 1:{
+						for(int i=0;i<4;i++){
+							if(jt.T.Y[i]+jt.vitri <10 && jt.T.Y[i]+jt.vitri>=0){
+								jt.cells[jt.T.X[i]+jt.k][jt.T.Y[i]+jt.vitri].setBackground(jt.T.COL_T);
+								jt.cells[jt.T.X[i]+jt.k][jt.T.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+							jt.a[i]=jt.T.X[i]+jt.k;
+							jt.b[i]=jt.T.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					case 2:{
+						for(int i=0;i<4;i++){
+							if(jt.O.Y[i]+jt.vitri <10 && jt.O.Y[i]+jt.vitri>=0){
+								jt.cells[jt.O.X[i]+jt.k][jt.O.Y[i]+jt.vitri].setBackground(jt.O.COL_O);
+								jt.cells[jt.O.X[i]+jt.k][jt.O.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+	
+							jt.a[i]=jt.O.X[i]+jt.k;
+							jt.b[i]=jt.O.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					case 3:{
+						for(int i=0;i<4;i++){
+							if(jt.L.Y[i]+jt.vitri <10 && jt.L.Y[i]+jt.vitri>=0){
+								jt.cells[jt.L.X[i]+jt.k][jt.L.Y[i]+jt.vitri].setBackground(jt.L.COL_L);
+								jt.cells[jt.L.X[i]+jt.k][jt.L.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+							jt.a[i]=jt.L.X[i]+jt.k;
+							jt.b[i]=jt.L.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					case 4:{
+						for(int i=0;i<4;i++){
+							if(jt.J.Y[i]+jt.vitri <10 && jt.J.Y[i]+jt.vitri>=0 ){
+								jt.cells[jt.J.X[i]+jt.k][jt.J.Y[i]+jt.vitri].setBackground(jt.J.COL_J);
+								jt.cells[jt.J.X[i]+jt.k][jt.J.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+							jt.a[i]=jt.J.X[i]+jt.k;
+							jt.b[i]=jt.J.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					case 5:{
+						for(int i=0;i<4;i++){
+							if(jt.S.Y[i]+jt.vitri <10 && jt.S.Y[i]+jt.vitri>=0 ){
+								jt.cells[jt.S.X[i]+jt.k][jt.S.Y[i]+jt.vitri].setBackground(jt.S.COL_S);
+								jt.cells[jt.S.X[i]+jt.k][jt.S.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+							jt.a[i]=jt.S.X[i]+jt.k;
+							jt.b[i]=jt.S.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					case 6:{
+						for(int i=0;i<4;i++){
+							if(jt.Z.Y[i]+jt.vitri <10 && jt.Z.Y[i]+jt.vitri>=0 ){
+								jt.cells[jt.Z.X[i]+jt.k][jt.Z.Y[i]+jt.vitri].setBackground(jt.Z.COL_Z);
+								jt.cells[jt.Z.X[i]+jt.k][jt.Z.Y[i]+jt.vitri].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+							}
+							jt.a[i]=jt.Z.X[i]+jt.k;
+							jt.b[i]=jt.Z.Y[i]+jt.vitri;
+						}jt.anhao();
+					}break;
+					default : ll=1;break;
+					}
+					try{
+						sleep(jt.lv);
+						boolean stop = true;
+						for(int i = 0; i < 4; i++){
+							boolean kt = true;
+							for(int j = 0; j < 4; j++){
+								if(jt.a[i] + 1 == jt.a[j] && jt.b[i] == jt.n[j])
+									kt = false;
+							}
+							if(kt == true){
+								if(jt.a[i] + 1 >= 20)
+									stop = false;
+								else if ((jt.cells[jt.a[i] + 1][jt.b[i]].getBackground() != jt.A) && (jt.cells[jt.a[i] + 1][jt.b[i]].getBackground() != jt.B)){
+									stop = false;
+								}
+							}
+						}
+						if(jt.k == 19 || stop == false){
+							Xoa(jt.a);
+							break;
+						}
+						for(int i = 0; i < 4; i++){
+							if(jt.a[i] >= 0){
+								if((jt.a[i] % 2 == 0 && jt.b[i] % 2 == 0) || (jt.a[i] % 2 != 0 && jt.b[i] % 2 !== 0))
+									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.A);
+								else
+									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.B);
+								jt.cells[jt.a[i]][jt.b[i]].setBorder(BorderFactory.createLineBorder(color.BLACK));
+							}
+						}
+					}
+						catch (Exception e){
+							e.printStackTrace();
+						}
+				}
+			}
+		}
+	}
+}
