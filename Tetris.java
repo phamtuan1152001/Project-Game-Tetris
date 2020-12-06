@@ -813,4 +813,82 @@ public void Thoat()
                 new ImageIcon(LoadImage("mtetris.png")));
 		System.exit(k);
 	}
-			
+public void Resest (){
+	newg=false;
+	vitri=0;
+	k=0;
+	d=0;diem.setText(Long.toString(d));
+	cap=0;level.setText(Integer.toString(cap));
+	demI=0;demT=0;demO=0;demJ=0;demS=0;demZ=0;
+	lv=1200;
+	picture[0].setText(Integer.toString(demI));
+	picture[1].setText(Integer.toString(demT));
+	picture[2].setText(Integer.toString(demO));
+	picture[3].setText(Integer.toString(demL));
+	picture[4].setText(Integer.toString(demJ));
+	picture[5].setText(Integer.toString(demS));
+	picture[6].setText(Integer.toString(demZ));
+	l=R.nextInt(70;
+		    }
+	public void anhao(){
+		if(perfect)
+		{
+			boolean stop=true;
+			boolean stop_shape=true;
+			int t=0;
+			while(true)
+			{
+				for(int i=0;i<4;i++)
+				{
+				boolean kt=true;
+					for(int j=0;j<4;j++)
+					{
+						if(a[i]+1==a[j] && b[i]==b[j])
+						{
+							kt=false;
+							break;
+						}
+					}
+					if(kt==true)
+					{
+						if (a[i]<19)
+							if((cells[a[i]+1+t][b[i]].getBackground()!=A)&&(cells[a[i]+1+t][b[i]].getBackground()!=B))
+							{
+								stop=false;
+								stop_shape=false;
+							}
+						if(a[i]+1+t>=19)
+						{
+							stop=false;
+						}
+					}
+				}
+				if(stop)
+					t++;
+				else break;
+			}
+			for(int i=0;i<20;i++){
+				for(int j=0;j<10;j++){
+					if((cells[i][j].getBackground()==A||(cells[i][j].getBackground()==B))
+					   cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+					else
+					   cells[i][j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				}
+					   }
+			if(stop_shape)
+					   t++;
+					   int minCurShape_X=21;
+					   int maxCurShape_X=-1;
+					   boolean kt=true;
+					   for(int i=0;i<4;i++)
+					   {
+						   if(a[i]>maxCurShape_X)
+							   maxCurShape_X=a[i];
+						   if(a[i]+t<minCurShape_X)
+						   {
+							   minCurShape_X=a[i]+t;
+						   }
+						   
+					   
+								
+	
