@@ -888,6 +888,182 @@ public void Resest (){
 						   {
 							   minCurShape_X=a[i]+t;
 						   }
+						   if(a[i]+t>=20)
+						   {
+							   kt=false;
+							   break;
+						   }
+						   else if((cells[a[i]+t][b[i]].getBackground()!=A)&&(cells[a[i]+t][b[i]].getBackground()!=B))
+						   {
+							   kt=false;
+							   break;
+						   }
+					   }
+					   if(maxCurShape_X < minCurShape_X && kt==true)
+					   for(int i=0;i<4;i++)
+					   {
+						   cells[a[i]+t][b[i]].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+					   }
+					   }
+					   else
+					   {
+						   for(int i=0;i<20;i++){
+							   for(int j=0;j<10;j++){
+								   if((cells[i][j].getBackground()==A||(cells[i][j].getBackground()==B))
+								      cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+								   else
+								      cells[i][j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+								      }
+								      }
+								      }
+								      }
+	public void keyPressed(KeyEvent evt){
+		int keyCode= evt.getKeyCode();
+		if ((keyCode == KeyEvent.VK_D || keyCode ==KeyEvent.VK_RIGHT) && pause==true){
+			MoveRight();
+			anhao;
+		}
+		else if((keyCode==KeyEvent.VK_A \\ keyCode==KeyEvent.VK_LEFT)&& pause==true){
+			MoveLeft();
+			anhao;
+		}
+		else if ((keyCode==KeyEvent.VK_S|| keyCode ==KeyEvent.VK_DOWN) && pause==true){
+			MoveNext();
+		}
+		else if ((keyCode== KeyEvent.VK_W || keyCode==KeyEvent.VK_UP) && pause==true){
+			MoveRotation();
+			anhao();
+		}
+		else if(keyCode==KeyEvent.VK_N){
+			if(!pause)
+			pause= !pause;
+			Resest();
+		}
+		else if(keyCode==KeyEvent.VK_E){
+			System.exit(k);
+		}
+		else if(keyCode==KeyEvent.VK_P){
+			pause= !pause;
+		}
+		else if(keyCode==KeyEvent.VK_H){
+			hiScore();
+		}
+		else if(keyCode==KeyEvent.VK_T){
+			perfect= !perfect;
+			anhao;
+		}
+		else if(keyCode==KeyEvent.VK_R){
+			Resest();
+		}
+		else if(keyCode==KeyEvent.VK_SPACE){
+			boolean kt=true;
+			for(int i=0;i<4;i++)
+			{
+				boolean flag=true;
+				for(int j=0;j<4;j++)
+				{
+					if(a[i]+1==a[j] && b[i]==b[j])
+						flag=false;
+				}
+				if(flag==true)
+				{
+					if(a[i]==19)
+					kt=false;
+					else if((cells[a[i]+1][b[i]].getBackground()!=A)&&(cells[a[i]+1][b[i]].getBackground()!=B))
+						kt=false;
+				}
+			}
+			if(ktt==true)
+				nextNow();
+		}
+	}
+public void keyReleased(KeyEvent arg0){
+}
+public void keyTyped(KeyEvent arg0){}
+public void setOver(){
+	pause= !pause;
+	String s;
+	do{
+		s= JOptionPane.showInputDialog(this,"Nhập tên của bạn...\nĐộ dài của tên nhỏ hơn 10 ký tự","New HiScore", JOptionPane.PLAIN_MESSAGE);
+	}
+	while(s !=null && (s.length() <1 || s.length() > 10));
+	hi.addTenNguoiChoi(s,d);
+	try{
+		hi.write_XML("hiscore.xml);
+			     }
+			     catch(Exception e){
+				     e.printStackTrace();
+			     }
+			     }
+public Image LoadImage(String image){
+	try{
+		File file= new File(image);
+		InputStream is = new FileInputStream(file);
+		Image im= ImageIO.read(new BufferedInputStream(is));
+		return im;
+	}
+	catch(Exception e){
+		e.printStackTrace();
+		return null;
+	}
+}
+public void hiScore(){
+	if(pause)
+		pause = !pause;
+	JPanel score= new JPanel();
+	hi.showHiScore();
+	JOptionPane.showMessageDialog(this,score,"HighScore",JOptionPane.PLAIN_MESSAGE,
+				      new ImageIcon(LoadImage("mtetris.png")));
+	if(!pause)
+		pause= !pause;
+}
+			     public void newGame(){
+				     newg= false;
+				     for( int i=0;i<20;i++){
+					     for(int j=0;j<10;j++){
+						     if((i%2==0 && j%2==0)||(i%2!=0 && j%2!=0))
+							     cells[i][j].setBackground(A);
+						     else
+							     cells[i][j].setBackground(B);
+						     cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+					     }
+				     }
+				     l=R.nextInt(7);
+			     }
+			     private class MenuHandler implements ActionListener{
+				     public void actionPerformed(ActionEvent e){
+					     try{
+						     JMenuItem tmp = (JMenuItem) e.getSource();
+						     if(tmp==ItemExit)
+							     Thoat();
+						     if(tmp==ItemRestart)
+							     Resest();
+						     if(tmp==ItemNew)
+						     {
+							     if(!pause)
+								     pause = !pause;
+							     Resest();
+						     }
+						     if(tmp==ItemPause){
+							     pause= !pause;
+						     }
+						     if(tmp==ItemHiScore){
+							     hiScore();
+						     }
+					     }
+					     catch(Exception exc){
+						     exc.printStackTrace(System.out);
+					     }
+				     }
+			     }
+			     }
+			     
+						     
+								      
+			
+
+								      
+							   
 						   
 					   
 								
