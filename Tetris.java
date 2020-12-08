@@ -161,7 +161,7 @@ public class Tetris extends JFrame immplements KeyListener{
 	  menuBar.add(menuTetris);
 	  
   }
-      public Jpanel Playgaame(){
+public Jpanel Playgaame(){
           JPanel center = new JPanel(new GridLayout(20,10));
 	  center.setPreferredSize(new Dimension(10*24,20*24));
 	  cells = new JPanel[20][10];
@@ -178,7 +178,7 @@ public class Tetris extends JFrame immplements KeyListener{
 	  }
       return center;
       }
-	public JPanel SetLeftgame(){
+public JPanel SetLeftgame(){
 		JPanel l = new JPanel();
 		BoxLayout rl = new BoxLayout(l,BoxLayout.Y_AXIS);
 		l.setLayout(rl);
@@ -268,8 +268,8 @@ public class Tetris extends JFrame immplements KeyListener{
 		l.setMaximumSize(new Dimension(150,0));
 		return l;
 	}
-	public JPanel SetRightGame(){
-		JPanel r new JPanel();
+public JPanel SetRightGame(){
+		JPanel r = new JPnanel();
 		r.setBorder(new EtchedBorder());
 		BoxLayout lr = new BoxLayout(r, BoxLayout.Y_AXIS);
 		r.setLayout(lr);
@@ -377,7 +377,7 @@ public class Tetris extends JFrame immplements KeyListener{
 		r.setMaximumSize(new Dimension(150,0));
 		return r;
 	}
-	public void MoveLeft(){
+public void MoveLeft(){
 		boolean stop = true;
 		for(int i=0;i<4;i++){
 			boolean kt= true;
@@ -409,7 +409,7 @@ public class Tetris extends JFrame immplements KeyListener{
 			}
 			vitri--;
 		}
-		public void MoveRight(){
+public void MoveRight(){
 		boolean stop = true;
 		for(int i=0;i<4;i++){
 			boolean kt= true;
@@ -442,7 +442,7 @@ public class Tetris extends JFrame immplements KeyListener{
 			}
 			vitri++;
 		}
-		public void MoveNext(){
+public void MoveNext(){
 		boolean stop = true;
 		for(int i=0;i<4;i++){
 			boolean kt= true;
@@ -478,7 +478,7 @@ public class Tetris extends JFrame immplements KeyListener{
 			k++;
 		}
 	}
-	public int kt(int tempa[], int tempb[], int ArC[], int BrC[])
+public int kt(int tempa[], int tempb[], int ArC[], int BrC[])
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -504,7 +504,7 @@ public class Tetris extends JFrame immplements KeyListener{
 		}
 		return 1;
 	}
-	public int KiemTra()
+public int KiemTra()
 	{
 		int tt = 0;
 		int []ArC = new int[4];
@@ -654,7 +654,7 @@ public class Tetris extends JFrame immplements KeyListener{
 		}
 		return 0;
 	}
-	public void MoveRotation()
+public void MoveRotation()
 	{
 		if (KiemTra() == 1)
 		{
@@ -829,8 +829,8 @@ public void Resest (){
 	picture[5].setText(Integer.toString(demS));
 	picture[6].setText(Integer.toString(demZ));
 	l=R.nextInt(70;
-		    }
-	public void anhao(){
+}	   
+public void anhao(){
 		if(perfect)
 		{
 			boolean stop=true;
@@ -917,7 +917,7 @@ public void Resest (){
 								      }
 								      }
 								      }
-	public void keyPressed(KeyEvent evt){
+public void keyPressed(KeyEvent evt){
 		int keyCode= evt.getKeyCode();
 		if ((keyCode == KeyEvent.VK_D || keyCode ==KeyEvent.VK_RIGHT) && pause==true){
 			MoveRight();
@@ -944,9 +944,6 @@ public void Resest (){
 		}
 		else if(keyCode==KeyEvent.VK_P){
 			pause= !pause;
-		}
-		else if(keyCode==KeyEvent.VK_H){
-			hiScore();
 		}
 		else if(keyCode==KeyEvent.VK_T){
 			perfect= !perfect;
@@ -979,22 +976,11 @@ public void Resest (){
 	}
 public void keyReleased(KeyEvent arg0){
 }
-public void keyTyped(KeyEvent arg0){}
+public void keyTyped(KeyEvent arg0){
+}
 public void setOver(){
 	pause= !pause;
-	String s;
-	do{
-		s= JOptionPane.showInputDialog(this,"Nhập tên của bạn...\nĐộ dài của tên nhỏ hơn 10 ký tự","New HiScore", JOptionPane.PLAIN_MESSAGE);
-	}
-	while(s !=null && (s.length() <1 || s.length() > 10));
-	hi.addTenNguoiChoi(s,d);
-	try{
-		hi.write_XML("hiscore.xml);
-			     }
-			     catch(Exception e){
-				     e.printStackTrace();
-			     }
-			     }
+}
 public Image LoadImage(String image){
 	try{
 		File file= new File(image);
@@ -1007,56 +993,42 @@ public Image LoadImage(String image){
 		return null;
 	}
 }
-public void hiScore(){
-	if(pause)
-		pause = !pause;
-	JPanel score= new JPanel();
-	hi.showHiScore();
-	JOptionPane.showMessageDialog(this,score,"HighScore",JOptionPane.PLAIN_MESSAGE,
-				      new ImageIcon(LoadImage("mtetris.png")));
-	if(!pause)
-		pause= !pause;
+public void newGame(){
+    newg= false;
+    for( int i=0;i<20;i++){
+    for(int j=0;j<10;j++){
+       if((i%2==0 && j%2==0)||(i%2!=0 && j%2!=0))
+	 cells[i][j].setBackground(A);
+       else
+	  cells[i][j].setBackground(B);
+	  cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+         }
+    }
+       l=R.nextInt(7);
 }
-			     public void newGame(){
-				     newg= false;
-				     for( int i=0;i<20;i++){
-					     for(int j=0;j<10;j++){
-						     if((i%2==0 && j%2==0)||(i%2!=0 && j%2!=0))
-							     cells[i][j].setBackground(A);
-						     else
-							     cells[i][j].setBackground(B);
-						     cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-					     }
-				     }
-				     l=R.nextInt(7);
-			     }
-			     private class MenuHandler implements ActionListener{
-				     public void actionPerformed(ActionEvent e){
-					     try{
-						     JMenuItem tmp = (JMenuItem) e.getSource();
-						     if(tmp==ItemExit)
-							     Thoat();
-						     if(tmp==ItemRestart)
-							     Resest();
-						     if(tmp==ItemNew)
-						     {
-							     if(!pause)
-								     pause = !pause;
-							     Resest();
-						     }
-						     if(tmp==ItemPause){
-							     pause= !pause;
-						     }
-						     if(tmp==ItemHiScore){
-							     hiScore();
-						     }
-					     }
-					     catch(Exception exc){
-						     exc.printStackTrace(System.out);
-					     }
-				     }
-			     }
-			     }
+private class MenuHandler implements ActionListener{
+public void actionPerformed(ActionEvent e){
+	 try {
+                JMenuItem tmp = (JMenuItem) e.getSource();
+                if (tmp == ItemExit)
+                	Thoat();
+                if(tmp == ItemRestart)
+                	Resest();
+                if(tmp == ItemNew)
+                {
+                	if(!pause)
+                		pause = !pause;
+                	Resest();
+                }
+                if(tmp == ItemPause){
+                	pause = !pause;
+		}
+            }catch (Exception exc) {
+                exc.printStackTrace(System.out);
+            }
+        }
+    }
+}
 			     
 						     
 								      
