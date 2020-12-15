@@ -117,4 +117,51 @@ public void write_XML(String file) throws Exception, XMLStreamException{
 		eventWriter.add(eventFactory.createEndDocument());
 		eventWriter.close();	
 }
-	
+public void createNode(XMLEventWriter eventWriter,String name,String value) throws XMLStreamException{
+		XMLEventFactory eventFactory = XMLEventFactory.newFactory();
+		XMLEvent end = eventFactory.createDTD("\n");
+		XMLEvent tab = eventFactory.createDTD("\t");
+		StartElement sElement = eventFactory.createStartElement("","", name);
+		eventWriter.add(tab);eventWriter.add(tab);
+		eventWriter.add(sElement);
+		Characters charracters = eventFactory.createCharacters(value);
+		eventWriter.add(charracters);
+		EndElement eElement = eventFactory.createEndElement("", "",name);
+		eventWriter.add(eElement);
+		eventWriter.add(end);
+	}
+public void addTenNguoiChoi(String ten,long d){
+		for(int i=0;i<5;i++){
+			int k = Integer.parseInt(diem[i]);
+			if(d>k){
+				for(int j=4;j>i;j--){
+					nguoichoi[j]=nguoichoi[j-1];
+					diem[j]=diem[j-1];
+				}
+				nguoichoi[i]=ten;
+				diem[i]=Long.toString(d);
+				break;
+			}
+		}
+	}
+public JPanel showHiscore(){
+		tableScore = new JPanel();
+		tableScore.setBorder(new EtchedBorder());
+		tableScore.setLayout(new BoxLayout(tableScore, BoxLayout.Y_AXIS));
+		row1 = new JPanel();
+		row1.add(new JLabel("BẢNG XẾP HẠNG"));
+		row1.setBackground(Color.YELLOW);
+		row1.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		row2 = new JPanel(new GridLayout(6,3));
+		row2.setPreferredSize(new Dimension(6*80,3*50));
+		panelRow2 = new JPanel[6][3];
+		for(int i=0;i<6;i++)
+		{
+			for(int j=0;j<3;j++)
+			{
+				panelRow2[i][j] = new JPanel();
+				panelRow2[i][j].setBackground(Color.WHITE);
+				panelRow2[i][j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+				row2.add(panelRow2[i][j]);
+			}
+		}
