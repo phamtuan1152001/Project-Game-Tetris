@@ -51,4 +51,70 @@ public class HiScore {
 	}
 }
 
+public HiScore(){
+		try{
+			XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+			InputStream in = new FileInputStream("hiscore.xml");
+			XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
+			nguoichoi = new String[5];
+			diem = new String[5];
+			int i=0,j=0;
+			while(eventReader.hasNext()){
+				XMLEvent event = eventReader.nextEvent();
+				if(event.isStartElement()){
+					if(event.asStartElement().getName().getLocalPart().equals("nguoichoi")){
+						event = eventReader.nextEvent();
+						String s = event.asCharacters().toString();
+						nguoichoi[i]=s;
+						i++;
+						continue;
+					}
+					else if(event.asStartElement().getName().getLocalPart().equals("diem")){
+						event = eventReader.nextEvent();
+						String s = event.asCharacters().toString();
+						diem[j]=s;
+						j++;
+						continue;
+					}
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		SapXep();
+	}
+	public String[] getNguoichoi(){
+		return nguoichoi;
+	}
+	public String[] getDiem(){
+		return diem;
+	}
+public void write_XML(String file) throws Exception, XMLStreamException{
+		XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
+		XMLEventWriter eventWriter = outputFactory.createXMLEventWriter(new FileOutputStream(file));
+		XMLEventFactory eventFactory = XMLEventFactory.newInstance();
+		XMLEvent end = eventFactory.createDTD("\n");
+		StartDocument startDocument = eventFactory.createStartDocument();
+		eventWriter.add(startDocument);
+		eventWriter.add(end);
+		
+		StartElement configStarElement = eventFactory.createStartElement("","","score");
+		eventWriter.add(configStarElement);
+		eventWriter.add(end);
+		XMLEvent tab = eventFactory.createDTD("\t");
+                for(int i=0;i<5;i++){
+			eventWriter.add(tab);
+			eventWriter.add(eventFactory.createStartElement("","","item"));
+			eventWriter.add(end);
+			createNode(eventWriter,"nguoichoi",nguoichoi[i]);
+			createNode(eventWriter,"diem",diem[i]);
+			eventWriter.add(tab);
+			eventWriter.add(eventFactory.createEndElement("","","item"));
+			eventWriter.add(end);
+		}
+                eventWriter.add(eventFactory.createEndElement("","","score"));
+		eventWriter.add(end);
+		eventWriter.add(eventFactory.createEndDocument());
+		eventWriter.close();	
+}
 	
