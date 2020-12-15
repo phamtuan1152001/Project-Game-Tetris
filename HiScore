@@ -165,3 +165,28 @@ public JPanel showHiscore(){
 				row2.add(panelRow2[i][j]);
 			}
 		}
+panelRow2[0][0].add(xephang);
+		panelRow2[0][1].add(ten);
+		panelRow2[0][2].add(diem1);
+		
+		for(int i=1;i<6;i++){
+			for(int j=0;j<3;j++){
+				if(j==0){
+					String s = Integer.toString(i);
+					JLabel h = new JLabel(s);
+					panelRow2[i][j].add(h);
+				}
+				else if(j==1){
+					JLabel lb = new JLabel(nguoichoi[i-1]);
+					panelRow2[i][j].add(lb);
+				}
+				else{
+					JLabel di = new JLabel(diem[i-1]);
+					panelRow2[i][j].add(di);
+				}
+			}
+		}
+	tableScore.add(row1);
+		tableScore.add(row2);
+		return tableScore;
+	}
