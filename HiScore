@@ -191,5 +191,5 @@ panelRow2[0][0].add(xephang);
 		return tableScore;
 	}
  public void score {
-
+      private
  }
