@@ -190,3 +190,6 @@ panelRow2[0][0].add(xephang);
 		tableScore.add(row2);
 		return tableScore;
 	}
+ public void score {
+
+ }
