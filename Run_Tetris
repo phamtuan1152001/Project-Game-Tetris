@@ -271,7 +271,7 @@ public void Xoa(int a[]){
 								
 								if(jt.I.Y[i] + jt.vitri < 10 && jt.I.Y[i] + jt.vitri >= 0){
 									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.I.COL_I);
-									jt.cells[jt.a[i]][jt.b[i]].setBorder(Borderfactory.createbevelBorder(bevelBorder.RAISED));
+									jt.cells[jt.a[i]][jt.b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 							}jt.anhao();
 						}
 					}break;
@@ -361,11 +361,11 @@ public void Xoa(int a[]){
 						}
 						for(int i = 0; i < 4; i++){
 							if(jt.a[i] >= 0){
-								if((jt.a[i] % 2 == 0 && jt.b[i] % 2 == 0) || (jt.a[i] % 2 != 0 && jt.b[i] % 2 !== 0))
+								if((jt.a[i] % 2 == 0 && jt.b[i] % 2 == 0) || (jt.a[i] % 2 != 0 && jt.b[i] % 2 != 0))
 									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.A);
 								else
 									jt.cells[jt.a[i]][jt.b[i]].setBackground(jt.B);
-								jt.cells[jt.a[i]][jt.b[i]].setBorder(BorderFactory.createLineBorder(color.BLACK));
+								jt.cells[jt.a[i]][jt.b[i]].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 							}
 						}
 					}
