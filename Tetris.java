@@ -32,7 +32,7 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
-public class Tetris extends JFrame immplements KeyListener{
+public class Tetris extends JFrame implements KeyListener{
   JMenuBar mainmenu = new JMenuBar();
 	JPanel menuPanel = new JPanel();
   protected JPanel game = new JPanel();
@@ -91,7 +91,6 @@ public class Tetris extends JFrame immplements KeyListener{
 	private static JMenuItem ItemNew = new JMenuItem();
 	private static JButton jnewgame = new JButton();
 	private static JButton jpause = new JButton();
-	private static JButton jhiscore = new JButton();
 	private static JButton jrestart = new JButton();
 	private static JButton jexit = new JButton();
   
@@ -102,12 +101,12 @@ public class Tetris extends JFrame immplements KeyListener{
 	  setIconImage(LoadImage("mtetris.png"));
 	  
 	  InitMenu();
-	  setJMenubar(menuBar);
+	  setJMenuBar(menuBar);
 	  
 	  game=Playgame();
 	  all.add(game,BorderLayout.CENTER);
 	  
-	  Left=SetLeftGame();
+	  left=SetLeftgame();
 	  right=SetRightGame();
 	  all.add(left,BorderLayout.WEST);
 	  all.add(right,BorderLayout.EAST);
@@ -116,8 +115,8 @@ public class Tetris extends JFrame immplements KeyListener{
 	  
 	  Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
 	  setLocation(screen.width/2 - getWidth()/2, screen.height/2 - getHeight()/2);
-	  this.setResizalbe(True);
-	  this.setVisible(True);
+	  this.setResizable(true);
+	  this.setVisible(true);
 	  this.setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
@@ -126,13 +125,12 @@ public class Tetris extends JFrame immplements KeyListener{
 	  ImageIcon newgame = new ImageIcon("iconimage.png");
 	  ImageIcon restart = new ImageIcon("mrestart.png");
 	  ImageIcon pause = new ImageIcon("mpause.png");
-	  ImageIcon hiscore = new ImageIcon("mhiscore.png");
 	  ImageIcon exit = new ImageIcon("mexit.png");
 	  
-	  menuTetris = new Jmenu("Option");
+	  menuTetris = new JMenu("Option");
 	  menuTetris.setMnemonic('J');
 	  
-	  ItemNew = new	JmenuItem("New Game",newgame);
+	  ItemNew = new	JMenuItem("New Game",newgame);
 	  ItemNew.setMnemonic('N');
 	  ItemNew.addActionListener(Mh);
 	  
@@ -144,10 +142,6 @@ public class Tetris extends JFrame immplements KeyListener{
 	  ItemPause.setMnemonic('P');
 	  ItemPause.addActionListener(Mh);
 	  
-	  ItemHiscore = new JMenuItem("Hiscore",hiscore);
-	  ItemHiscore.setMnemonic('C');
-	  ItemHiscore.addActionListener(Mh);
-	  
 	  ItemExit = new JMenuItem("Exit",exit);
 	  ItemExit.setMnemonic('E');
 	  ItemExit.addActionListener(Mh);
@@ -155,13 +149,12 @@ public class Tetris extends JFrame immplements KeyListener{
 	  menuTetris.add(ItemNew);
 	  menuTetris.add(ItemRestart);
 	  menuTetris.add(ItemPause);
-	  menuTetris.add(ItemHiscore);
 	  menuTetris.add(ItemExit);
 	  
 	  menuBar.add(menuTetris);
 	  
   }
-public Jpanel Playgaame(){
+public JPanel Playgame(){
           JPanel center = new JPanel(new GridLayout(20,10));
 	  center.setPreferredSize(new Dimension(10*24,20*24));
 	  cells = new JPanel[20][10];
@@ -169,7 +162,7 @@ public Jpanel Playgaame(){
 		  for(int j = 0; j < 10; j++){
 			  cell[i][j]= new JPanel();
 			  if((i%2==0 && j%2==0)||(i%2!=0 && j%2!=0))
-				  cell[i][j].setBackgroud(A);
+				  cell[i][j].setBackground(A);
 			  else
 				  cell[i][j].setBackground(B);
 			  cell[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -184,11 +177,11 @@ public JPanel SetLeftgame(){
 		l.setLayout(rl);
 		l.setBorder(new EtchedBorder());
 		JPanel JP = new JPanel();
-		JP.setLayout(new BoxLayout(JP, BoxLayout(JP,BoxLayout.LINE_AXIS);
+		JP.setLayout(new BoxLayout(JP,BoxLayout.LINE_AXIS));
 		JP.add(new JLabel("Static"));
-		l.add(Box.createRigidArea(new Dimension(0,10));
+		l.add(Box.createRigidArea(new Dimension(0,10)));
 		l.add(JP);
-		l.add(Box.createRigidArea(new Dimension(0,10));
+		l.add(Box.createRigidArea(new Dimension(0,10)));
 		Dimension d = new Dimension(4*12,4*12);
 		picture = new JLabel[7];
 		for(int k=0; k<7; k++){
@@ -197,11 +190,11 @@ public JPanel SetLeftgame(){
 			FP = new JPanel();
 			FP.setLayout(new BoxLayout(FP, BoxLayout.LINE_AXIS));
 			chuatunghinh.setLayout(new GridLayout(4,4));
-			chuatunghinh.setMinimumsize(d);
+			chuatunghinh.setMinimumSize(d);
 			chuatunghinh.setPreferredSize(d);
 			chuatunghinh.setMaximumSize(d);
 			for(int i=0; i<4; i++){
-				for(int j=0; j<4; J++){
+				for(int j=0; j<4; j++){
 					cell[i][j] = new JPanel();
 					cell[i][j].setBackground(null);
 					chuatunghinh.add(cell[i][j]);
@@ -212,25 +205,25 @@ public JPanel SetLeftgame(){
 				case 1:{
 					FigureI fi = new FigureI();
 					for(int i=0; i<4; i++){
-						cell[ft.arrX[i]][ft.arrY[i]].setBackground(ft.COL_I);
-						cell[ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						cell[fi.arrX[i]][fi.arrY[i]].setBackground(fi.COL_I);
+						cell[fi.arrX[i]][fi.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 					}
 				}break;
 				case 2: FigureT ft = new FigureT();{
 					for(int i = 0; i<4; i++){
 						cell[ft.arrX[i]][ft.arrY[i]].setBackground(ft.COL_T);
-						cell(ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+						cell[ft.arrX[i]][ft.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 				        }
 	                        }break;
-				case 3:	FigureO fo = new Figureo();{
+				case 3:	FigureO fo = new FigureO();{
 					for(int i = 0; i < 4; i++){
-						cell[fo.arrX[i]][fo.arrY[i]].setbackground(fo.COL_L);
+						cell[fo.arrX[i]][fo.arrY[i]].setBackground(fo.COL_L);
 						cell[fo.arrX[i]][fo.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 						}
 					}break;
 				case 4: FigureL fl = new FigureL();{
 					for( int i = 0; i < 4; i++){
-						cell[fl.arrX[i]][fl.arrY[i]].setbackground(fl.COL_L);
+						cell[fl.arrX[i]][fl.arrY[i]].setBackground(fl.COL_L);
 						cell[fl.arrX[i]][fl.arrY[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 					}
 				}break;
@@ -258,7 +251,7 @@ public JPanel SetLeftgame(){
 			FP.add(text);
 			
 			picture[k] = new JLabel(" 0 ");
-			picture[k].setForeground(color.BLUE);
+			picture[k].setForeground(Color.BLUE);
 			FP.add(picture[k]);
 			l.add(FP);
 			l.add(Box.createRigidArea(new Dimension(100, 15)));
@@ -269,14 +262,14 @@ public JPanel SetLeftgame(){
 		return l;
 	}
 public JPanel SetRightGame(){
-		JPanel r = new JPnanel();
+		JPanel r = new JPanel();
 		r.setBorder(new EtchedBorder());
 		BoxLayout lr = new BoxLayout(r, BoxLayout.Y_AXIS);
 		r.setLayout(lr);
 		
 		JPanel sharp = new JPanel();
 		
-		Dimension d = new Diemension(100, 100);
+		Dimension d = new Dimension(100, 100);
 		sharp.setLayout(new GridLayout(4, 4));
 		sharp.setMaximumSize(d);
 		sharp.setMinimumSize(d);
@@ -293,11 +286,11 @@ public JPanel SetRightGame(){
 		nextSharp.setForeground(Color.BLACK);
 		r.add(nextSharp);
 		r.add(sharp);
-		r,add(Box.createRigidAre(new Dimension(0, 50)));
+		r.add(Box.createRigidArea(new Dimension(0, 50)));
 		JPanel score = new JPanel(new FlowLayout());
 		JLabel textscore = new JLabel("Score : ");
 		textscore.setForeground(Color.BLACK);
-		score = new JLabel (" 0 ");
+		diem = new JLabel (" 0 ");
 		score.setForeground(Color.RED);
 		
 		JPanel LV = new JPanel(new FlowLayout());
@@ -312,11 +305,11 @@ public JPanel SetRightGame(){
 		score.setMaximumSize(new Dimension(200, 30));
 		LV.setMaximumSize(new Dimension(200, 30));
 		score.setBorder(new EtchedBorder());
-		LV.setBorder(new EtchBorder());
+		LV.setBorder(new EtchedBorder());
 		r.add(score);
 		r.add(LV);
 		r.add(Box.createRigidArea(new Dimension(0, 1)));
-		JPanel tutoral = new JPanel();
+		JPanel tutorial = new JPanel();
 		tutorial.setLayout(new BoxLayout(tutorial, BoxLayout.Y_AXIS));
 		JLabel sTut = new JLabel("Tutorial         ");
 		sTut.setForeground(Color.RED);
@@ -326,8 +319,6 @@ public JPanel SetRightGame(){
 			sP.setForeground(Color.BLUE);
 		JLabel sR = new JLabel("R:");
 			sR.setForeground(Color.RED);
-		JLabel sH = new JLabel("H:");
-			sH.setForeground(Color.GREEN);
 		JLabel sT = new JLabel("T:");
 			sT.setForeground(Color.CYAN);
 		JLabel sE = new JLabel("E:");
@@ -335,13 +326,11 @@ public JPanel SetRightGame(){
 		JLabel sNewgame = new JLabel(" New game");
 		JLabel sPause= new JLabel(" Pause        ");
 		JLabel sRestart = new JLabel(" Restart      ");
-		JLabel sHiscore = new JLabel(" High score");
 		JLabel sPerfect = new JLabel(" Perfect       ");
 		JLabel sExit = new JLabel(" Exit              ");
 		JPanel pN = new JPanel();
 		JPanel pP = new JPanel();
 		JPanel pR = new JPanel();
-		JPanel pH = new JPanel();
 		JPanel pT = new JPanel();
 		JPanel pE = new JPanel();
 		pN.add(sN);
@@ -350,8 +339,6 @@ public JPanel SetRightGame(){
 		pP.add(sPause);
 		pR.add(sR);
 		pR.add(sRestart);
-		pH.add(sH);
-		pH.add(sHiscore);
 		pT.add(sT);
 		pT.add(sPerfect);
 		pE.add(sE);
@@ -359,7 +346,6 @@ public JPanel SetRightGame(){
 		pN.setMaximumSize(new Dimension(150,30));
 		pP.setMaximumSize(new Dimension(150,30));
 		pR.setMaximumSize(new Dimension(150,30));
-		pH.setMaximumSize(new Dimension(150,30));
 		pT.setMaximumSize(new Dimension(150,30));
 		pE.setMaximumSize(new Dimension(150,30));
 		tutorial.add(sTut);
@@ -367,7 +353,6 @@ public JPanel SetRightGame(){
 		tutorial.add(pN);
 		tutorial.add(pP);
 		tutorial.add(pR);
-		tutorial.add(pH);
 		tutorial.add(pT);
 		tutorial.add(pE);
 		tutorial.setBorder(new EtchedBorder());
@@ -409,6 +394,7 @@ public void MoveLeft(){
 			}
 			vitri--;
 		}
+}
 public void MoveRight(){
 		boolean stop = true;
 		for(int i=0;i<4;i++){
@@ -442,6 +428,7 @@ public void MoveRight(){
 			}
 			vitri++;
 		}
+}
 public void MoveNext(){
 		boolean stop = true;
 		for(int i=0;i<4;i++){
@@ -473,7 +460,7 @@ public void MoveNext(){
 			{
 				a[i] = a[i] + 1;
 				cells[a[i]][b[i]].setBackground(curClo);
-				cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBoder.RAISED));
+				cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 			}
 			k++;
 		}
@@ -482,7 +469,7 @@ public int kt(int tempa[], int tempb[], int ArC[], int BrC[])
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (tempb[i] + vitri < 0 || tempb[i] + vitri > 9 || tempa + k > 19)
+			if (tempb[i] + vitri < 0 || tempb[i] + vitri > 9 || tempa[i] + k > 19)
 			{
 				return 0;
 			}
@@ -496,7 +483,7 @@ public int kt(int tempa[], int tempb[], int ArC[], int BrC[])
 			}
 			if (ktq == true)
 			{
-				if (cells[tempa[i] + k][tempb[i] + vitri].getBackground() != A) && (cells[tempa[i] + k][tempb[i] + vitri].getBackground() != B))	
+				if ((cells[tempa[i] + k][tempb[i] + vitri].getBackground() != A) && (cells[tempa[i] + k][tempb[i] + vitri].getBackground() != B))	
 				{
 					return 0;
 				}
@@ -532,7 +519,7 @@ public int KiemTra()
 			I.Y = BrC;
 			return 1;
 		}
-		else if (curC == FigureT.CO;_T)
+		else if (curC == FigureT.COL_T)
 		{
 			tt = T.rotati;
 			ArC = T.X;
@@ -542,7 +529,7 @@ public int KiemTra()
 			tempb = T.Y;
 			if (kt (tempa, tempb, ArC, BrC) == 0)
 			{
-				T.rotati == TT;
+				T.rotati = tt;
 				T.X = ArC;
 				T.Y = BrC;
 				return 0;
@@ -806,11 +793,7 @@ public void nextNow(){
 			cells[a[i]][b[i]].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		}
 	}
-public void Thoat()
-	{
-		JOptionPane.showMessageDialog(this,"<html><font color='red' size='50px'>Chúc bạn có 1 ngày làm việc vui vẻ</font></html>","Help", 
-                JOptionPane.PLAIN_MESSAGE, 
-                new ImageIcon(LoadImage("mtetris.png")));
+	public void Thoat(){
 		System.exit(k);
 	}
 public void Resest (){
@@ -828,7 +811,7 @@ public void Resest (){
 	picture[4].setText(Integer.toString(demJ));
 	picture[5].setText(Integer.toString(demS));
 	picture[6].setText(Integer.toString(demZ));
-	l=R.nextInt(70;
+	l=R.nextInt(70);
 }	   
 public void anhao(){
 		if(perfect)
@@ -869,7 +852,7 @@ public void anhao(){
 			}
 			for(int i=0;i<20;i++){
 				for(int j=0;j<10;j++){
-					if((cells[i][j].getBackground()==A||(cells[i][j].getBackground()==B))
+					if((cells[i][j].getBackground()==A)||(cells[i][j].getBackground()==B))
 					   cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 					else
 					   cells[i][j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
@@ -909,7 +892,7 @@ public void anhao(){
 					   {
 						   for(int i=0;i<20;i++){
 							   for(int j=0;j<10;j++){
-								   if((cells[i][j].getBackground()==A||(cells[i][j].getBackground()==B))
+								   if((cells[i][j].getBackground()==A)||(cells[i][j].getBackground()==B))
 								      cells[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 								   else
 								      cells[i][j].setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
@@ -921,11 +904,11 @@ public void keyPressed(KeyEvent evt){
 		int keyCode= evt.getKeyCode();
 		if ((keyCode == KeyEvent.VK_D || keyCode ==KeyEvent.VK_RIGHT) && pause==true){
 			MoveRight();
-			anhao;
+			anhao();
 		}
-		else if((keyCode==KeyEvent.VK_A \\ keyCode==KeyEvent.VK_LEFT)&& pause==true){
+		else if((keyCode==KeyEvent.VK_A || keyCode==KeyEvent.VK_LEFT)&& pause==true){
 			MoveLeft();
-			anhao;
+			anhao();
 		}
 		else if ((keyCode==KeyEvent.VK_S|| keyCode ==KeyEvent.VK_DOWN) && pause==true){
 			MoveNext();
@@ -947,7 +930,7 @@ public void keyPressed(KeyEvent evt){
 		}
 		else if(keyCode==KeyEvent.VK_T){
 			perfect= !perfect;
-			anhao;
+			anhao();
 		}
 		else if(keyCode==KeyEvent.VK_R){
 			Resest();
@@ -970,7 +953,7 @@ public void keyPressed(KeyEvent evt){
 						kt=false;
 				}
 			}
-			if(ktt==true)
+			if(kt==true)
 				nextNow();
 		}
 	}
@@ -1010,8 +993,8 @@ private class MenuHandler implements ActionListener{
 public void actionPerformed(ActionEvent e){
 	 try {
                 JMenuItem tmp = (JMenuItem) e.getSource();
-                if (tmp == ItemExit)
-                	Thoat();
+		 if(tmp == ItemExit)
+			 Thoat();
                 if(tmp == ItemRestart)
                 	Resest();
                 if(tmp == ItemNew)
