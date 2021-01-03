@@ -84,7 +84,6 @@ public class Tetris extends JFrame implements KeyListener{
 	private static JMenu menuHelp = new JMenu();
 	private static JMenuItem ItemRestart = new JMenuItem();
 	private static JMenuItem ItemPause = new JMenuItem();
-	private static JMenuItem ItemHiscore = new JMenuItem();
 	public static JMenuItem ItemExit = new JMenuItem();
 	private static JMenuItem ItemJetrishelp = new JMenuItem();
 	private static JMenuItem ItemAbout = new JMenuItem();
